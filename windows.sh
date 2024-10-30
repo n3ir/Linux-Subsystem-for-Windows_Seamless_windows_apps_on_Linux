@@ -26,7 +26,7 @@ fi
 # Move focus to VM instance window (works for me on Linux Mint XFCE, if not working for you, you can adapt other solutions for your DE: https://superuser.com/questions/142945/bash-command-to-focus-a-specific-window)
 wmctrl -a win10
 
-VBoxManage --nologo guestcontrol "win10" run --username admin --password RALFqxAbLDEdFfVdgXjPD2Yvk3uqjT4JG8V9yVhrkBAD8jpRjwh4dZmtMxpdHGAn \
+VBoxManage --nologo guestcontrol "win10" run --username admin --password "$WIN_PASS"
 --wait-stdout --exe "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -- "net use z: \\\\vboxsvr\\ROOT"
 
 #
@@ -39,7 +39,7 @@ cd ~/.tmp
 touch tmpfile
 chmod +x tmpfile
 # CHANGE windows username (no password!)
-cmd=(VBoxManage --nologo guestcontrol "win10" run --username admin --password RALFqxAbLDEdFfVdgXjPD2Yvk3uqjT4JG8V9yVhrkBAD8jpRjwh4dZmtMxpdHGAn \
+cmd=(VBoxManage --nologo guestcontrol "win10" run --username admin --password "$WIN_PASS" \
 --wait-stdout --exe 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' -- '"& \"Z:\\'${1}'\""')
 echo "${cmd[@]}" >> tmpfile
 
